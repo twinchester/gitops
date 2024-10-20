@@ -1,1 +1,1 @@
-# giotops
+# gitops

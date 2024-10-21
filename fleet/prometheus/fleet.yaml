@@ -23,3 +23,20 @@ helm:
           - secretName: prometheus-server-tls
             hosts:
               - prometheus.moozo.co
+    alertmanager:
+      ingress:
+        enabled: true
+        ingressClassName: traefik
+        annotations: 
+          cert-manager.io/issuer: rancher
+          cert-manager.io/issuer-kind: Issuer
+          spec.ingressClassName: traefik
+          traefik.ingress.kubernetes.io/router.middlewares: monitoring-prometheus-basic-auth@kubernetescrd
+        hosts:
+          - alertmanager.moozo.co
+        path: /
+        pathType: Prefix
+        tls:
+          - secretName: alertmanager-server-tls
+            hosts:
+              - alertmanager.moozo.co

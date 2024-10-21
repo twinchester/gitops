@@ -6,28 +6,28 @@ helm:
   version: 25.26.0
   releaseName: prometheus
   values:
-    server:
-      ingress:
-        enabled: true
-        annotations: 
-          kubernetes.io/ingress.class: "traefik"
-          cert-manager.io/issuer: rancher
-          cert-manager.io/issuer-kind: Issuer
-          traefik.ingress.kubernetes.io/auth-type: basic
-          traefik.ingress.kubernetes.io/auth-secret: prometheus-basic-auth
-          ingress.kubernetes.io/custom-request-headers: "cookie: X-OPENHAB-AUTH-HEADER=true"
-          ingress.kubernetes.io/custom-response-headers: "cookie: X-OPENHAB-AUTH-HEADER=true"
-          ingress.kubernetes.io/auth-remove-header: "true"
-        hosts:
-          - prometheus.moozo.co
-        path: /
-        pathType: Prefix
-        extraPaths: []
-        # - path: /*
-        #   backend:
-        #     serviceName: ssl-redirect
-        #     servicePort: use-annotation
-        tls:
-          - secretName: prometheus-server-tls
-            hosts:
-              - prometheus.moozo.co
+    # server:
+    #   ingress:
+    #     enabled: true
+    #     annotations: 
+    #       kubernetes.io/ingress.class: "traefik"
+    #       cert-manager.io/issuer: rancher
+    #       cert-manager.io/issuer-kind: Issuer
+    #       traefik.ingress.kubernetes.io/auth-type: basic
+    #       traefik.ingress.kubernetes.io/auth-secret: prometheus-basic-auth
+    #       ingress.kubernetes.io/custom-request-headers: "cookie: X-OPENHAB-AUTH-HEADER=true"
+    #       ingress.kubernetes.io/custom-response-headers: "cookie: X-OPENHAB-AUTH-HEADER=true"
+    #       ingress.kubernetes.io/auth-remove-header: "true"
+    #     hosts:
+    #       - prometheus.moozo.co
+    #     path: /
+    #     pathType: Prefix
+    #     extraPaths: []
+    #     # - path: /*
+    #     #   backend:
+    #     #     serviceName: ssl-redirect
+    #     #     servicePort: use-annotation
+    #     tls:
+    #       - secretName: prometheus-server-tls
+    #         hosts:
+    #           - prometheus.moozo.co

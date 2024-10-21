@@ -12,8 +12,6 @@ helm:
       annotations:
           cert-manager.io/issuer: rancher
           cert-manager.io/issuer-kind: Issuer
-          spec.ingressClassName: traefik
-          traefik.ingress.kubernetes.io/router.middlewares: monitoring-prometheus-basic-auth@kubernetescrd
       path: /
       pathType: Prefix
       hosts:

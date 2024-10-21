@@ -23,6 +23,7 @@ helm:
           - secretName: prometheus-server-tls
             hosts:
               - prometheus.moozo.co
+              
     alertmanager:
       ingress:
         enabled: true
@@ -41,3 +42,9 @@ helm:
           - secretName: alertmanager-server-tls
             hosts:
               - alertmanager.moozo.co
+              
+    prometheus-pushgateway:
+      enabled: false
+
+    kube-state-metrics:
+      enabled: false

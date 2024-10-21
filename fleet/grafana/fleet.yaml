@@ -6,4 +6,19 @@ helm:
   version: 8.5.7
   releaseName: grafana
   values:
-
+    ingress:
+      enabled: true
+      ingressClassName: traefik
+      annotations:
+          cert-manager.io/issuer: rancher
+          cert-manager.io/issuer-kind: Issuer
+          spec.ingressClassName: traefik
+          traefik.ingress.kubernetes.io/router.middlewares: monitoring-prometheus-basic-auth@kubernetescrd
+      path: /
+      pathType: Prefix
+      hosts:
+        - grafana.moozo.co
+      tls:
+        - secretName: grafana-server-tls
+          hosts:
+            - grafana.moozo.co

@@ -33,7 +33,7 @@ helm:
           spec.ingressClassName: traefik
           traefik.ingress.kubernetes.io/router.middlewares: monitoring-prometheus-basic-auth@kubernetescrd
         hosts:
-          - host: - alertmanager.moozo.co
+          - host: alertmanager.moozo.co
             paths:
               - path: /
                 pathType: Prefix

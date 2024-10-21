@@ -9,6 +9,7 @@ helm:
     server:
       ingress:
         enabled: true
+        ingressClassName: traefik
         annotations: 
           kubernetes.io/ingress.class: "traefik"
           cert-manager.io/issuer: rancher
@@ -18,7 +19,6 @@ helm:
           ingress.kubernetes.io/custom-request-headers: "cookie: X-OPENHAB-AUTH-HEADER=true"
           ingress.kubernetes.io/custom-response-headers: "cookie: X-OPENHAB-AUTH-HEADER=true"
           ingress.kubernetes.io/auth-remove-header: "true"
-          ingressClassName: traefik
         hosts:
           - prometheus.moozo.co
         path: /

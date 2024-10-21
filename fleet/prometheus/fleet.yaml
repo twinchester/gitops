@@ -11,14 +11,10 @@ helm:
         enabled: true
         ingressClassName: traefik
         annotations: 
-          kubernetes.io/ingress.class: "traefik"
           cert-manager.io/issuer: rancher
           cert-manager.io/issuer-kind: Issuer
-          traefik.ingress.kubernetes.io/auth-type: basic
-          traefik.ingress.kubernetes.io/auth-secret: prometheus-basic-auth
-          ingress.kubernetes.io/custom-request-headers: "cookie: X-OPENHAB-AUTH-HEADER=true"
-          ingress.kubernetes.io/custom-response-headers: "cookie: X-OPENHAB-AUTH-HEADER=true"
-          ingress.kubernetes.io/auth-remove-header: "true"
+          spec.ingressClassName: traefik
+          traefik.ingress.kubernetes.io/router.middlewares: monitoring-prometheus-basic-auth@kubernetescrd
         hosts:
           - prometheus.moozo.co
         path: /
